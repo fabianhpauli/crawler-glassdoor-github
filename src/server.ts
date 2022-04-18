@@ -9,7 +9,7 @@ import ObjectsToCsv from 'objects-to-csv';
 import jsonexport from 'jsonexport'
 
 const app = express();
-const authenticatedLinkedin = new Browser().getLinkedinAuthenticatedPage()
+// const authenticatedLinkedin = new Browser().getLinkedinAuthenticatedPage()
 // const authenticatedCrunchbase = new Browser().getCrunchbaseAuthenticatedPage()
 
 app.use(express.json());
@@ -33,50 +33,50 @@ app.get("/glassdoor", async (req, res) => {
     return res.send(arquivos);
 });
 
-app.get("/github", async (req, res) => {
-    const arquivos = [];
-    const currentDateArq = new Date()
-        .toString()
-        .replaceAll("-", "_")
-        .replaceAll(":", "_")
-        .replaceAll(" ", "_")
-        .substring(4, 24);
-    /** Github */
-    const arquivoGithub = `github${currentDateArq}.csv`
-    const github = new extractGithub();
-    const dataGithub = await github.execute();
-    const githubCSV = new ObjectsToCsv(dataGithub);
-    // Save to file:
-    await githubCSV.toDisk(`./src/export/${arquivoGithub}`);
-    arquivos.push(arquivoGithub)
-    return res.send(arquivos);
-});
+// app.get("/github", async (req, res) => {
+//     const arquivos = [];
+//     const currentDateArq = new Date()
+//         .toString()
+//         .replaceAll("-", "_")
+//         .replaceAll(":", "_")
+//         .replaceAll(" ", "_")
+//         .substring(4, 24);
+//     /** Github */
+//     const arquivoGithub = `github${currentDateArq}.csv`
+//     const github = new extractGithub();
+//     const dataGithub = await github.execute();
+//     const githubCSV = new ObjectsToCsv(dataGithub);
+//     // Save to file:
+//     await githubCSV.toDisk(`./src/export/${arquivoGithub}`);
+//     arquivos.push(arquivoGithub)
+//     return res.send(arquivos);
+// });
 
-app.get("/linkedin", async (req, res) => {
-    const arquivos = [];
-    const currentDateArq = new Date()
-        .toString()
-        .replaceAll("-", "_")
-        .replaceAll(":", "_")
-        .replaceAll(" ", "_")
-        .substring(4, 24);
+// app.get("/linkedin", async (req, res) => {
+//     const arquivos = [];
+//     const currentDateArq = new Date()
+//         .toString()
+//         .replaceAll("-", "_")
+//         .replaceAll(":", "_")
+//         .replaceAll(" ", "_")
+//         .substring(4, 24);
 
-    /** Linkedin */
-    const arquivoLinkedin = `linkedin${currentDateArq}.csv`
-    const linkedin = new extractLinkedin();
-    const dataLinkedin = await linkedin.execute(await authenticatedLinkedin);
+//     /** Linkedin */
+//     const arquivoLinkedin = `linkedin${currentDateArq}.csv`
+//     const linkedin = new extractLinkedin();
+//     const dataLinkedin = await linkedin.execute(await authenticatedLinkedin);
 
-    jsonexport(dataLinkedin,function(err, csv){
-        if(err) return console.log(err);
-        console.log(csv);
-    });
-    const csvfile = new ObjectsToCsv(dataLinkedin);
-    // Save to file:
-    await csvfile.toDisk(`./src/export/${arquivoLinkedin}`);
-    arquivos.push(arquivoLinkedin)
+//     jsonexport(dataLinkedin,function(err, csv){
+//         if(err) return console.log(err);
+//         console.log(csv);
+//     });
+//     const csvfile = new ObjectsToCsv(dataLinkedin);
+//     // Save to file:
+//     await csvfile.toDisk(`./src/export/${arquivoLinkedin}`);
+//     arquivos.push(arquivoLinkedin)
 
-    return res.send(arquivos);
-});
+//     return res.send(arquivos);
+// });
 
 // app.get("/crunchbase", async (req, res) => {
 //     const arquivos = [];
@@ -100,4 +100,4 @@ app.get("/linkedin", async (req, res) => {
 // });
 
 
-app.listen(3535, () => console.log("Server is running! it's alive, it's alive!"))
+app.listen(3536, () => console.log("Server is running! it's alive, it's alive!"))
