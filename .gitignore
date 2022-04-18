@@ -1,6 +1,5 @@
 .vscode
 node_modules/
 ./src/util/urls.ts
-./src/export/g*.csv
 client_secret.json
 .env
