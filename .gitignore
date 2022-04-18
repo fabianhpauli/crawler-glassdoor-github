@@ -1,2 +1,5 @@
-node_modules
-src/export/*
+.vscode/
+node_modules/
+.env
+./util/urls.ts
+./client_secret.json
