@@ -6,32 +6,60 @@ import { extractLinkedin } from "./modules/linkedin/extractLinkedin"
 import { extractCrunchbase } from "./modules/crunchBase/extractCrunchbase"
 import { Browser } from "../src/util/browser";
 import ObjectsToCsv from 'objects-to-csv';
-import jsonexport from 'jsonexport'
+import { sheetIntegration } from './integrating/integrate'
 
 const app = express();
-// const authenticatedLinkedin = new Browser().getLinkedinAuthenticatedPage()
-// const authenticatedCrunchbase = new Browser().getCrunchbaseAuthenticatedPage()
 
+// const authenticatedCrunchbase = new Browser().getCrunchbaseAuthenticatedPage()
 app.use(express.json());
 
-app.get("/glassdoor", async (req, res) => {
-    const arquivos = [];
-    const currentDateArq = new Date()
-        .toString()
-        .replaceAll("-", "_")
-        .replaceAll(":", "_")
-        .replaceAll(" ", "_")
-        .substring(4, 24);
-    /** Glassdoor */
-    const arquivoGlassdoor = `glassdoor${currentDateArq}.csv`
+app.get("/sheets/glassdoor", async (req, res) => {
+    const doc = new sheetIntegration()
     const glassdoor = new extractGlassdoor();
     const dataGlassdoor = await glassdoor.execute();
-    const glassdoorCSV = new ObjectsToCsv(dataGlassdoor);
-    /** Save to file: */
-    await glassdoorCSV.toDisk(`./src/export/${arquivoGlassdoor}`);
-    arquivos.push(arquivoGlassdoor)
-    return res.send(arquivos);
-});
+    doc.updateGlassdoorData(dataGlassdoor); // loads document properties and worksheets
+    
+    return res.send()
+})
+app.get("/sheets/github", async (req, res) => {
+    const doc = new sheetIntegration()
+
+    const github = new extractGithub();
+    const dataGithub = await github.execute();
+    doc.updateGithubData(dataGithub)
+    
+    return res.send()
+})
+app.get("/sheets/linkedin", async (req, res) => {
+    const authenticatedLinkedin = new Browser().getLinkedinAuthenticatedPage()
+    const doc = new sheetIntegration()
+
+    /** Linkedin */
+    const linkedin = new extractLinkedin();
+    const dataLinkedin = await linkedin.execute(await authenticatedLinkedin);
+    doc.updateLinkedin(dataLinkedin)
+    // ;(await authenticatedLinkedin).close()
+
+    return res.send()
+})
+// app.get("/glassdoor", async (req, res) => {
+//     const arquivos = [];
+//     const currentDateArq = new Date()
+//         .toString()
+//         .replaceAll("-", "_")
+//         .replaceAll(":", "_")
+//         .replaceAll(" ", "_")
+//         .substring(4, 24);
+//     /** Glassdoor */
+//     const arquivoGlassdoor = `glassdoor${currentDateArq}.csv`
+//     const glassdoor = new extractGlassdoor();
+//     const dataGlassdoor = await glassdoor.execute();
+//     const glassdoorCSV = new ObjectsToCsv(dataGlassdoor);
+//     /** Save to file: */
+//     await glassdoorCSV.toDisk(`./src/export/${arquivoGlassdoor}`);
+//     arquivos.push(arquivoGlassdoor)
+//     return res.send(arquivos);
+// });
 
 // app.get("/github", async (req, res) => {
 //     const arquivos = [];
@@ -100,4 +128,4 @@ app.get("/glassdoor", async (req, res) => {
 // });
 
 
-app.listen(3536, () => console.log("Server is running! it's alive, it's alive!"))
+app.listen(3535, () => console.log("Server is running! it's alive, it's alive!"))

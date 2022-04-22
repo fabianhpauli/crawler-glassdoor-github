@@ -3,11 +3,13 @@
         "target": "es2021",
         "module": "commonjs",
         "moduleResolution": "node",
+        "resolveJsonModule":true,
         "outDir": "./build",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
+        
     }
 }

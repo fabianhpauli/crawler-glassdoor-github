@@ -3,11 +3,12 @@ class crawlGithub {
     constructor(
     ) { }
 
-    async execute(url: string, browser: puppeteer.Browser): Promise<Object> {
+    async execute(url: string, company: string, browser: puppeteer.Browser): Promise<Object> {
 
-        let language = { "url": url };
+        let language = { "url": url, "company": company};
         try {
-            const page = await browser.newPage();
+            browser.browserContexts
+            const page = (await browser.pages())[0]
             page.setDefaultTimeout(5000)
             page.setDefaultNavigationTimeout(0)
             await page.goto(url)
@@ -17,11 +18,13 @@ class crawlGithub {
             for (let index = 0; index < listOfLanguages.length; index++) {
                 language[index + 1] = await (await listOfLanguages[index].getProperty('innerText')).toString().trimEnd().trimStart().replace("JSHandle:", "");
             }
-            await page.close();
+            // await page.close();
         } catch (error) {
+            
             console.log(`url: ${url} mensagem ${error.message}`)
+        }finally{
+            return language
         }
-        return language
     }
 }
 

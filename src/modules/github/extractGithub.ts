@@ -17,11 +17,14 @@ class extractGithub {
             let page:Object;
             console.log(`Executando ${i+1} de ${list.length}`)
             if(list[i].github){
-                page = await github.execute(list[i].github, tab)
+                page = await github.execute(list[i].github,list[i].company, tab)
+            }else{
+                page = { company:  list[i].company, url: list[i].github}
+                
             }
             data.push(page)
         }
-
+        await tab.close()
         return data;
     }
 }

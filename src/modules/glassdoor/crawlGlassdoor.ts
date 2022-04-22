@@ -1,10 +1,11 @@
 import puppeteer from 'puppeteer';
 import fetch from 'node-fetch'
+import { IData } from './extractGlassdoor';
 class crawlGlassdoor{
     constructor(
     ){}
 
-    async execute(url:string): Promise<string>{
+    async execute(url:string, company:string): Promise<IData>{
         const req = await fetch(url)
         const res = await req.text()
 
@@ -20,6 +21,7 @@ class crawlGlassdoor{
     
         ratings.recomend = recommend;
         ratings.url = url;
+        ratings.company = company;
         console.log(url)
     
         return ratings

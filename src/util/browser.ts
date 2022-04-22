@@ -18,6 +18,13 @@ class Browser {
 
     async getBrowser(): Promise<puppeteer.Browser> {
         const browser = await puppeteer.launch({
+            headless: false
+        });
+
+        return browser
+    }
+    async getBrowserIncognito(): Promise<puppeteer.Browser> {
+        const browser = await puppeteer.launch({
             executablePath: 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
             headless: false, args: [
                 '--incognito',
@@ -26,11 +33,10 @@ class Browser {
 
         return browser
     }
-
     async getLinkedinAuthenticatedPage(): Promise<puppeteer.Page> {
         // const context = await (await this.getBrowser()).createIncognitoBrowserContext()
         // const page = await context.newPage();
-        const browser = await this.getBrowser()
+        const browser = await this.getBrowserIncognito()
         const page = (await browser.pages())[0]
 
         page.setDefaultTimeout(5000)
@@ -47,7 +53,7 @@ class Browser {
         return page
     }
     async getCrunchbaseAuthenticatedPage(): Promise<puppeteer.Page> {
-        const browser = await this.getBrowser()
+        const browser = await this.getBrowserIncognito()
         const page = (await browser.pages())[0]
         await page.setUserAgent(
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36'

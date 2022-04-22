@@ -24,13 +24,13 @@ var URLs = [
     { company: "SolFacil", glassdoor: "", github: "https://github.com/solfacil" },
     { company: "Memed", glassdoor: "", github: "https://github.com/MemedDev" },
     { company: "Omie", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Omie-EI_IE2483805.13,17.htm", github: "https://github.com/omiexperience" },
-    { company: "Will Bank", glassdoor: "", github: "" },
+    { company: "will bank", glassdoor: "", github: "" },
     { company: "Cobli", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Cobli-EI_IE2304948.13,18.htm", github: "https://github.com/Cobliteam" },
     { company: "Pier Seguradora", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Pier-EI_IE2848417.13,17.htm", github: "https://github.com/pier-digital" },
     { company: "Justos", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Justos-EI_IE5222765.13,19.htm", github: "https://github.com/justosbr" },
-    { company: "180 Seguros", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-180-Seguros-EI_IE6397601.13,24.htm", github: "https://github.com/180seg", crunchbase: "" },
+    { company: "180° Seguros", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-180-Seguros-EI_IE6397601.13,24.htm", github: "https://github.com/180seg", crunchbase: "" },
     { company: "99", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-99-EI_IE1384588.13,15.htm", github: "https://github.com/99Taxis", crunchbase: "" },
-    { company: "Addi", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-ADDI-EI_IE3843870.13,17.htm", github: "https://github.com/AdelanteFinancialHoldings", crunchbase: "" },
+    { company: "ADDI", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-ADDI-EI_IE3843870.13,17.htm", github: "https://github.com/AdelanteFinancialHoldings", crunchbase: "" },
     { company: "Adyen", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Adyen-EI_IE684495.13,18.htm", github: "", crunchbase: "" },
     { company: "Agi", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Agi-EI_IE1997188.13,16.htm", github: "", crunchbase: "" },
     { company: "Alelo Brasil", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Alelo-EI_IE502801.13,18.htm", github: "", crunchbase: "" },
@@ -190,6 +190,6 @@ var URLs = [
     { company: "Zenvia", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Zenvia-EI_IE1290025.13,19.htm", github: "https://github.com/zenvia", crunchbase: "https://www.crunchbase.com/organization/zenvia" },
     { company: "Zoop", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Zoop-EI_IE2850162.13,17.htm", github: "https://github.com/getzoop", crunchbase: "https://www.crunchbase.com/organization/zoop" },
     { company: "Zup Innovation", glassdoor: "https://www.glassdoor.com.br/Vis%C3%A3o-geral/Trabalhar-na-Zup-Innovation-EI_IE2482761.13,27.htm", github: "https://github.com/ZupIT" , crunchbase: "https://www.crunchbase.com/organization/zup-it-innovation"},
-        ]
+    ]
 
 export default URLs
